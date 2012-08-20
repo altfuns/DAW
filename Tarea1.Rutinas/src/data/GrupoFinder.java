@@ -41,4 +41,15 @@ public class GrupoFinder {
 			result.add(GrupoRowGateway.load(dataSource, (Map) grupos.get(i)));
 		return result;
 	}
+	
+	private final static String findWithProfesorIdStatement = "SELECT * "
+			+ "FROM grupo WHERE id_profesor = ?";
+
+	public List<GrupoRowGateway> findWithProfesorId(int profesorId) {
+		List result = new ArrayList();
+		List grupos = jdbcTemplate.queryForList(findWithProfesorIdStatement, profesorId);
+		for (int i = 0; i < grupos.size(); i++)
+			result.add(GrupoRowGateway.load(dataSource, (Map) grupos.get(i)));
+		return result;
+	}
 }

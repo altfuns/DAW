@@ -1,5 +1,6 @@
 package data;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
@@ -97,6 +98,18 @@ public class GrupoRowGateway {
 
 	private void createJdbcTemplate() {
 		jdbcTemplate = new JdbcTemplate(dataSource);
+	}
+	
+	public static Map getPropertiesMap(GrupoRowGateway group){
+		Map item = new HashMap();
+		item.put("id", group.getId() + "");
+		item.put("numero", group.getNumero());
+		item.put("sigla", group.getSigla());
+		item.put("nombre", group.getNombre());
+		item.put("horario", group.getHorario());
+		item.put("aula", group.getAula());
+		item.put("idProfesor", group.getIdProfesor());
+		return item;
 	}
 
 	private static final String insertStatement = "INSERT INTO grupo "

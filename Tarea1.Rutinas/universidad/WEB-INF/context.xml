@@ -10,6 +10,9 @@
     <bean id="profesorFinder" class="data.ProfesorFinder">
         <property name="dataSource" ref="dataSource"/>
     </bean>
+    <bean id="grupoFinder" class="data.GrupoFinder">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="${jdbc.driverClassName}"/>
