@@ -14,13 +14,20 @@ import data.ProfesorFinder;
 import data.ProfesorRowGateway;
 import display.FrontCommand;
 
-public class DetalleGrupo extends FrontCommand {
+public class AgregarGrupo extends FrontCommand {
+
 	public void process() throws ServletException, IOException {
 		GrupoFinder grupos = (GrupoFinder) context.getBean("grupoFinder");
-		String id = request.getParameter("id");
-		GrupoRowGateway grupo = grupos.find(id);
-
-		request.setAttribute("grupo", GrupoRowGateway.getPropertiesMap(grupo));
+		GrupoRowGateway grupo = grupos.create();
+		Map item = new HashMap();
+		item.put("id", "-1");
+		item.put("numero", "");
+		item.put("sigla", "");
+		item.put("nombre", "");
+		item.put("horario", "");
+		item.put("aula", "");
+		item.put("idProfesor", "1");
+		request.setAttribute("grupo", item);
 		request.setAttribute("profesores", getProfesorParams());
 		forward("/detalleGrupo.jsp");
 	}

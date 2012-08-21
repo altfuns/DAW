@@ -1,6 +1,7 @@
 package domain;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,13 +18,14 @@ public class AgregarProfesor extends FrontCommand {
 				.getBean("profesorFinder");
 		ProfesorRowGateway prof = profs.create();
 		Map params = new HashMap();
-		params.put("id", prof.getId() + "");
-		params.put("cedula", prof.getCedula());
-		params.put("nombre", prof.getNombre());
-		params.put("titulo", prof.getTitulo());
-		params.put("area", prof.getArea());
-		params.put("telefono", prof.getTelefono());
+		params.put("id", "-1");
+		params.put("cedula", "");
+		params.put("nombre", "");
+		params.put("titulo", "");
+		params.put("area", "");
+		params.put("telefono", "");
 		request.setAttribute("profesor", params);
+		request.setAttribute("grupos", new ArrayList<Integer>());
 		forward("/detalleProfesor.jsp");
 	}
 }

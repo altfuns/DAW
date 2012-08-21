@@ -3,6 +3,7 @@ package data;
 import java.util.*;
 import java.sql.*;
 import javax.sql.*;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class ProfesorRowGateway {
@@ -42,6 +43,17 @@ public class ProfesorRowGateway {
   public void setTelefono(String tel) {this.telefono=tel;}
   public String getTelefono() {return telefono;}
 
+  public static Map getPropertiesMap(ProfesorRowGateway profesor){
+	  	Map item = new HashMap();
+		item.put("id", profesor.getId() + "");
+		item.put("cedula", profesor.getCedula());
+		item.put("nombre", profesor.getNombre());
+		item.put("titulo", profesor.getTitulo());
+		item.put("area", profesor.getArea());
+		item.put("telefono", profesor.getTelefono());
+		return item;
+	}
+  
   public void setDataSource(DataSource dataSource) {
     this.dataSource = dataSource;
   }
